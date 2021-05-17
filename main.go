@@ -13,9 +13,9 @@ func main() {
 	err := download(url)
 
 	if err != nil {
-		fmt.Println("download gagal")
+		fmt.Println("download success")
 	} else {
-		fmt.Println("download berhasil")
+		fmt.Println("download failed")
 	}
 }
 
