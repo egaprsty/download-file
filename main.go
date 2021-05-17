@@ -9,9 +9,8 @@ import (
 
 func main() {
 	url := "https://agung-setiawan.com/bukuvim/img/captain.png"
-	fileName := "ega.png"
 
-	err := download(fileName, url)
+	err := download(url)
 
 	if err != nil {
 		fmt.Println("download gagal")
@@ -20,7 +19,7 @@ func main() {
 	}
 }
 
-func download(fileName string, url string) error {
+func download(url string) error {
 	response, err := http.Get(url)
 	if err != nil {
 		return err
@@ -28,6 +27,8 @@ func download(fileName string, url string) error {
 
 	defer response.Body.Close()
 
+	fileName := path.Base(response.Request.URL.String())
+	
 	file, err := os.Create(fileName)
 	if err != nil {
 		return err
